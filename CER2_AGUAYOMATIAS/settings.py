@@ -34,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CER2_APELLIDONOMBRE.urls'
+ROOT_URLCONF = 'CER2_AGUAYOMATIAS.urls'
 
 TEMPLATES = [
     {
@@ -52,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CER2_APELLIDONOMBRE.wsgi.application'
+WSGI_APPLICATION = 'CER2_AGUAYOMATIAS.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -86,7 +86,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    r'CER2_APELLIDONOMBRE\static',
+    r'CER2_AGUAYOMATIAS\static',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
