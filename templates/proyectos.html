@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Proyectos Presentados{% endblock %}
+
+{% block content %}
+<div class="portfolio-container">
+    <h2 class="portfolio-title">Proyectos Presentados</h2>
+    {% if user.is_authenticated %}
+    <a href="{% url 'crear_proyecto' %}" class="initiativas create-btn">Crear Proyecto</a>
+    {% endif %}
+
+    <div class="filter-container">
+        {% if user.is_profesor %}
+            <a href="?filtrar_patrocinados=True" class="filter-btn">Patrocinados</a>
+            <a href="?filtrar_no_patrocinados=True" class="filter-btn">No Patrocinados</a>
+        {% endif %}
+        <a href="{% url 'proyectos' %}" class="filter-btn">Todos los Temas</a>
+    </div>
+
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>Nombre Proyecto</th>
+                <th>Estudiante</th>
+                <th>Tema</th>
+                <th>Profesor</th>
+                <th>Patrocinado</th>
+                <th>Profesor Patrocinador</th>
+                <th>Ver Detalles</th>
+                {% if user.is_authenticated %}
+                <th>Editar</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ proyecto.nombre_proyecto }}</td>
+                <td>{{ proyecto.estudiante.username }}</td>
+                <td>{{ proyecto.tema }}</td>
+                <td>{{ proyecto.nombre_profesor }}</td>
+                <td>{{ proyecto.patrocinado }}</td>
+                <td>
+                    {% if proyecto.profesor_patrocinador %}
+                        {{ proyecto.profesor_patrocinador.username }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'detalle_proyecto' proyecto.id %}" class="btn btn-primary">Ver Detalles</a></td>
+                {% if user.is_authenticated %}
+                    {% if user == proyecto.estudiante or user.is_profesor %}
+                        <td><a href="{% url 'modificar_proyecto' proyecto.id %}" class="edit-btn">Editar</a></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

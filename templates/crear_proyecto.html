@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Proyecto{% endblock %}
+
+{% block content %}
+<h2>Crear Proyecto</h2>
+<div class="form-container">
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_nombre_proyecto">Nombre proyecto:</label>
+            <input type="text" name="nombre_proyecto" maxlength="100" required id="id_nombre_proyecto" class="form-input">
+        </p>
+        <p>
+            <label for="id_tema">Tema:</label>
+            <input type="text" name="tema" maxlength="100" required id="id_tema" class="form-input">
+        </p>
+        <p>
+            <label for="id_nombre_profesor">Nombre profesor:</label>
+            <input type="text" name="nombre_profesor" maxlength="100" required id="id_nombre_profesor" class="form-input">
+        </p>
+        <p>
+            <label for="id_descripcion">Descripción:</label>
+            <textarea name="descripcion" cols="40" rows="10" required id="id_descripcion" class="form-textarea"></textarea>
+        </p>
+        <p>
+            <label for="id_patrocinio">Patrocinio:</label>
+            <input type="text" name="patrocinio" maxlength="100" id="id_patrocinio" class="form-input">
+        </p>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+<style>
+    .form-container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container form p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .form-container form label {
+        margin-bottom: 5px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-container form .form-input,
+    .form-container form .form-textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1em;
+    }
+
+    .form-container form .form-input:focus,
+    .form-container form .form-textarea:focus {
+        outline: none;
+        border-color: #005e90;
+    }
+
+    .form-container form .btn {
+        align-self: center;
+        padding: 10px 20px;
+        background-color: #005e90;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-container form .btn:hover {
+        background-color: #004070;
+    }
+</style>
+{% endblock %}

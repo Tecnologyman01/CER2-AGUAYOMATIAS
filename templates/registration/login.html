@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #005e90;
+    }
+    .login-container {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-header {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+    .login-form-container {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-form-container img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ffcc00;
+        padding: 10px;
+    }
+    .login-form-container form {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .login-form-container form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .login-form-container form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .login-form-container form button {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+</style>
+
+<div class="login-container">
+    <h2 class="login-header">Iniciar Sesión</h2>
+    <div class="login-form-container">
+        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <img src="https://img.icons8.com/?size=100&id=41799&format=png&color=000000" alt="User Icon">
+        </div>
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            
+            <div style="margin-bottom: 10px;">
+                <label for="id_username">Email:</label>
+                {{ form.username }}
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <label for="id_password">Contraseña:</label>
+                {{ form.password }}
+            </div>
+            
+            <div>
+                <button type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
